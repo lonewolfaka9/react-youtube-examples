@@ -1,0 +1,71 @@
+.row{
+ width: 100vw;
+ margin-top:50px
+
+}
+
+
+.col{
+    padding-top: 10px;
+    font-size: 16em;
+    font-size: 1.5em;
+    overflow: auto;
+}
+
+.one {
+width:24% ;
+float: left;
+height: 100vh;
+
+}
+.two{
+    width:75% ;
+    float: right;
+    text-align: center;
+    background-color:#E8E8E8
+ 
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+@media screen and (max-width: 900px) {
+    .one {
+        width:100% ;
+        float: left;
+        
+        }
+
+        .two{
+            width:100% ;
+            float: right;
+            text-align: center;
+        
+        }
+}
