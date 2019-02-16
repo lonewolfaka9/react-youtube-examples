@@ -40,13 +40,12 @@ describe('Loading search View', () => {
         var query = "keyword";
         var appheader = searchdash.find(AppHeader)
         var searchInput = appheader.find("#search");
-        searchInput.simulate('change', { target: { id: "search", name: 'search', value: query } });
 
+        searchInput.simulate('change', { target: { id: "search", name: 'search', value: query } });
         searchInput.simulate('keypress', { key: 'Enter', keyCode: 13, which: 13 });
 
         expect(appheader.state().query).toEqual(query); // query updated in app header
-
-        expect(searchdash.state().query).toEqual(query);
+        expect(searchdash.state().query).toEqual(query);//query updated in SearchDash and api gets called
 
     });
 
