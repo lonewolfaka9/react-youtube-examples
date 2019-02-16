@@ -28,8 +28,9 @@ export default class AppHeader extends Component {
 
     var query = this.state.query;
     query = query.trim();
-
+ 
     if (event.key === 'Enter' && query.length > 0) {
+ 
       this.props.queryString(query);
 
     }

@@ -11,7 +11,7 @@ export default class SearchDash extends Component {
     super(props);
 
     this.state = {
-      userAuth: null,
+      userAuth: false,
       query: "",
       nextPageToken: "",// use this to load next page data
       videoData: [],
@@ -35,7 +35,7 @@ export default class SearchDash extends Component {
     }
     this.setState({ userAuth: authCookieValue }, () => {
 
-      console.log("cookie value " + authCookieValue);
+      //"cookie value " + authCookieValue);
       if (!authCookieValue) { this.props.history.push("/") };
 
     });
@@ -44,7 +44,7 @@ export default class SearchDash extends Component {
 
   fetchQuery(query) {
 
-    this.setState({ query: query, loading: "loading ..." }, () => {
+     this.setState({ query: query, loading: "loading ..." }, () => {
       this.youtubeRestApiCall("", query, this);
     });
 
@@ -58,12 +58,12 @@ export default class SearchDash extends Component {
       url += "&pageToken=" + pageToken;
     }
 
-    console.log(url)
+    // console.log(url)
     fetch(url)
       .then((resp) => resp.json()) // Transform the data into json
       .then(function (data) {
         // Create and append the li's to the ul
-        console.log("result ");
+        //console.log("result ");
 
         var nextPageToken = data.nextPageToken;
         var array = data.items;
@@ -85,11 +85,11 @@ export default class SearchDash extends Component {
 
         if (searchData.length > 0) {
           videoData = searchData[0];
-          console.log(videoData);
+          // console.log(videoData);
         }
 
         _this.setState({ nextPageToken: "nextPageToken", searchData: searchData, videoData: videoData, loading: "Search Something" }, () => { console.log(_this.state.searchData) });
-      })
+      }).catch(error => console.error(error));
   }
 
   handleClick(videoData) {
@@ -103,7 +103,12 @@ export default class SearchDash extends Component {
       <div>
         <AppHeader queryString={this.fetchQuery} />
 
-        <div className="col two">   {Object.keys(this.state.videoData).length > 0 ? <VideoPlayer videoData={this.state.videoData} /> : this.state.loading}     </div>
+        <div className="col two">
+          {Object.keys(this.state.videoData).length > 0
+            ? <VideoPlayer videoData={this.state.videoData} />
+            :
+            this.state.loading}
+        </div>
 
         <div className="row">
           <div className="col  one">    {

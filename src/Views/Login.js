@@ -7,7 +7,7 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      userAuth: null,
+      userAuth: false,
       username: "",
       password: ""
     };
@@ -28,7 +28,7 @@ export default class Login extends Component {
     }
     this.setState({ userAuth: authCookieValue }, () => {
 
-      console.log("cookie value " + authCookieValue);
+      //console.log("cookie value " + authCookieValue);
       if (authCookieValue) { this.props.history.push("/search") };
 
     });
@@ -73,16 +73,20 @@ export default class Login extends Component {
               <label >Username</label>
               <br />
 
-              <input style={{display:"table-cell", width:"100%"}} type="text" id="username" placeholder="Username" onChange={this.handleChange} value={this.state.username} />
+              <input style={{display:"table-cell", width:"100%"}} 
+              type="text" id="username" placeholder="Username" 
+              onChange={this.handleChange} value={this.state.username} />
               <br />
 
               <label >Password</label>
               <br />
 
-              <input style={{display:"table-cell", width:"100%"}} type="password" id="password" placeholder="Password" onChange={this.handleChange} value={this.state.password} />
+              <input style={{display:"table-cell", width:"100%"}}
+               type="password" id="password" placeholder="Password"
+                onChange={this.handleChange} value={this.state.password} />
               <br />
 
-              <input type="button" value="Login" onClick={this.handleSubmit} />
+              <input id="submit" type="button" value="Login" onClick={this.handleSubmit} />
             </fieldset>
           </form>
         </div>
