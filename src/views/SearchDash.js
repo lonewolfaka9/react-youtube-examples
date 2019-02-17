@@ -103,14 +103,15 @@ export default class SearchDash extends Component {
       <div>
         <AppHeader queryString={this.fetchQuery} />
 
+      
+
+        <div className="row">
         <div className="col two">
           {Object.keys(this.state.videoData).length > 0
             ? <VideoPlayer videoData={this.state.videoData} />
             :
             this.state.loading}
         </div>
-
-        <div className="row">
           <div className="col  one">    {
             this.state.searchData.map(
               function (data, i) {
