@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppHeader from '../components/AppHeader';
+//import AppHeader from '../components/AppHeader';
 import cookie from 'react-cookies'
 export default class Login extends Component {
 
@@ -47,10 +47,11 @@ export default class Login extends Component {
   handleSubmit() {
 
     if (this.state.username === "admin" && this.state.password === "password") {
-       cookie.save("auth", true);
+      cookie.save("auth", true);
       this.props.history.push("/search")
     } else {
-       window.confirm('Invalid Credentials')    }
+      window.confirm('Invalid Credentials')
+    }
   }
   render() {
     return (
@@ -73,16 +74,16 @@ export default class Login extends Component {
               <label >Username</label>
               <br />
 
-              <input style={{display:"table-cell", width:"100%"}} 
-              type="text" id="username" placeholder="Username" 
-              onChange={this.handleChange} value={this.state.username} />
+              <input style={{ display: "table-cell", width: "100%" }}
+                type="text" id="username" placeholder="Username"
+                onChange={this.handleChange} value={this.state.username} />
               <br />
 
               <label >Password</label>
               <br />
 
-              <input style={{display:"table-cell", width:"100%"}}
-               type="password" id="password" placeholder="Password"
+              <input style={{ display: "table-cell", width: "100%" }}
+                type="password" id="password" placeholder="Password"
                 onChange={this.handleChange} value={this.state.password} />
               <br />
 

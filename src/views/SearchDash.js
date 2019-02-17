@@ -44,7 +44,7 @@ export default class SearchDash extends Component {
 
   fetchQuery(query) {
 
-     this.setState({ query: query, loading: "loading ..." }, () => {
+    this.setState({ query: query, loading: "loading ..." }, () => {
       this.youtubeRestApiCall("", query, this);
     });
 
@@ -88,7 +88,7 @@ export default class SearchDash extends Component {
           // console.log(videoData);
         }
 
-        _this.setState({ nextPageToken: "nextPageToken", searchData: searchData, videoData: videoData, loading: "Search Something" }, () => { console.log(_this.state.searchData) });
+        _this.setState({ nextPageToken: nextPageToken, searchData: searchData, videoData: videoData, loading: "Search Something" }, () => { console.log(_this.state.searchData) });
       }).catch(error => console.error(error));
   }
 
@@ -103,15 +103,15 @@ export default class SearchDash extends Component {
       <div>
         <AppHeader queryString={this.fetchQuery} />
 
-      
+
 
         <div className="row">
-        <div className="col two">
-          {Object.keys(this.state.videoData).length > 0
-            ? <VideoPlayer videoData={this.state.videoData} />
-            :
-            this.state.loading}
-        </div>
+          <div className="col two">
+            {Object.keys(this.state.videoData).length > 0
+              ? <VideoPlayer videoData={this.state.videoData} />
+              :
+              this.state.loading}
+          </div>
           <div className="col  one">    {
             this.state.searchData.map(
               function (data, i) {

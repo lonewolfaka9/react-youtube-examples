@@ -32,7 +32,7 @@ this.loadVideo = this.loadVideo.bind(this);
        }}
        
        onClick = {this.loadVideo}>
-        <img src={data.thumbnail}  width={"100%"}  />
+        <img src={data.thumbnail} alt={data.title} width={"100%"}  />
         <div style={{  "padding": "2px 16px" ,fontSize: "0.9em"}}>
           <h4> {data.title}</h4>
         </div>
