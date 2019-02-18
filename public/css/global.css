@@ -1,13 +1,54 @@
-.row{
- width: 100%;
- margin-top:50px
+.appHeader{
+    
+    height: 50px;
+    background: #F0F0F0;
+    border: 0px solid #CCC;
+    min-width: 100vW;
+    margin: 0px;
+    text-align: center;
+    position: fixed;
+    top:0px
+        
+}
+input{
+    font-size:16px;
+}
+.appHeader input{
+    display: flex;
+    min-width: 300px;
+    height: 80%;
+    margin: 0 auto;
+   }
 
+
+.sidebarItem{
+    transition: 0.3s;
+    margin:10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-bottom:10px
+
+        
+}
+.sidebarItem div{
+    padding: 2px 16px ;
+}
+.sidebarItem div h4{
+    font-size: 0.9em
+}
+
+.sidebarItem img{
+width:100%;
+}
+
+
+.row{
+    width: 100%;
+    margin-top:50px
 }
 
 
 .col{
     padding-top: 10px;
-    font-size: 16em;
     font-size: 1.5em;
     overflow: auto;
 }
@@ -50,6 +91,35 @@ height: 100vh;
     animation: spin 2s linear infinite;
   }
   
+  .loginForm{
+        min-width: 300px;
+        max-width: 500px;
+        position: absolute;
+        margin: auto;
+        padding:10px;
+        top:0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size:20px;
+   }
+
+   .form-group{
+    font-size:20px;
+
+   }
+   .form-group input{
+    width: 90%;
+    margin:10px;
+    font-size:20px;
+
+
+   }
+   .form-group label{
+    width: 90%;
+    margin:10px;
+
+   }
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

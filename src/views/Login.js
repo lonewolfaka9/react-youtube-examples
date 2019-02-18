@@ -56,44 +56,21 @@ export default class Login extends Component {
   render() {
     return (
 
-      <div >
-        <div style={{
-          minWidth: 300,
-          maxWidth: 500,
-          position: "absolute",
-          margin: "auto",
-          top:0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-        }}>
+         <div className="loginForm">
 
           <form>
             <fieldset>
-              <legend style={{ fontSize:20, margin:10 }}>Login here</legend>
-              <label style={{ display: "table-cell", width: "90%", fontSize:20,  margin:10 }} >Username</label>
-              <br />
-
-              <input style={{ display: "table-cell", width: "90%", fontSize:20 , margin:10 }}
-                type="text" id="username" placeholder="Username"
-                onChange={this.handleChange} value={this.state.username} />
-             
-
-              <label style={{ display: "table-cell", width: "90%", fontSize:20, margin:10 }}>Password</label>
-              
-
-              <input style={{ display: "table-cell", width: "90%", fontSize:20, margin:10 }}
-                type="password" id="password" placeholder="Password"
-                onChange={this.handleChange} value={this.state.password} />
-               
-
-              <input style={{ display: "table-cell", width: "90%", fontSize:20 , margin:10}}
-               id="submit" type="button" value="Login" onClick={this.handleSubmit} />
-            </fieldset>
+            <div className="form-group">
+              <label >Username</label>
+              <input type="text" id="username" placeholder="Username"  onChange={this.handleChange} value={this.state.username} />
+              <label >Password</label>
+              <input type="password" id="password" placeholder="Password"  onChange={this.handleChange} value={this.state.password} />
+              <input id="submit" type="button" value="Login" onClick={this.handleSubmit} />
+            </div>
+             </fieldset>
           </form>
         </div>
 
-      </div>
-    )
+     )
   }
 }

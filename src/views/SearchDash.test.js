@@ -37,9 +37,9 @@ describe('Loading search View', () => {
 
     it('Input value in AppHeader search input', () => {
 
-        var query = "keyword";
-        var appheader = searchdash.find(AppHeader)
-        var searchInput = appheader.find("#search");
+        let query = "keyword";
+        let appheader = searchdash.find(AppHeader)
+        let searchInput = appheader.find("#search");
 
         searchInput.simulate('change', { target: { id: "search", name: 'search', value: query } });
         searchInput.simulate('keypress', { key: 'Enter', keyCode: 13, which: 13 });

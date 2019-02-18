@@ -15,7 +15,7 @@ class VideoPlayer extends Component {
     }
 
     componentDidMount() {
-
+        // do something 
     }
 
     componentWillReceiveProps(nextProps) {
@@ -33,15 +33,12 @@ class VideoPlayer extends Component {
         //   const videoData =this.state.videoData;
         return (
             <div>
-
                 <h5>{this.state.videoData.title}</h5>
                 <div className="videoWrapper">
                     <iframe src={`https://www.youtube.com/embed/${this.state.videoData.videoId}`}
                         frameBorder='0'
                         allow='autoplay; encrypted-media'
-
-                        title={this.state.videoData.title}
-                        width="400px" height="300px" />
+                        title={this.state.videoData.title} />
                 </div>
                 <p>{this.state.videoData.description}</p>
             </div>

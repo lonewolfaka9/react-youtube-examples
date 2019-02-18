@@ -27,7 +27,7 @@ export default class SearchDash extends Component {
 
   }
   componentWillMount() {
-    var authCookieValue = cookie.load("auth");// should be replaced by auth token
+    let authCookieValue = cookie.load("auth");// should be replaced by auth token
     if (authCookieValue === undefined) {
       authCookieValue = false;
     } else {
@@ -35,7 +35,6 @@ export default class SearchDash extends Component {
     }
     this.setState({ userAuth: authCookieValue }, () => {
 
-      //"cookie value " + authCookieValue);
       if (!authCookieValue) { this.props.history.push("/") };
 
     });
@@ -52,7 +51,7 @@ export default class SearchDash extends Component {
   }
 
   youtubeRestApiCall(pageToken, query, _this) {
-    var url = "https://www.googleapis.com/youtube/v3/search?q=" + query + "&maxResults=25&part=snippet&key=AIzaSyB_tfJo8Hb8ZOyLHF0mjcyG0nI1EtERPbc";
+    let url = "https://www.googleapis.com/youtube/v3/search?q=" + query + "&maxResults=25&part=snippet&key=AIzaSyB_tfJo8Hb8ZOyLHF0mjcyG0nI1EtERPbc";
 
     if (pageToken !== "") {
       url += "&pageToken=" + pageToken;
@@ -65,15 +64,15 @@ export default class SearchDash extends Component {
         // Create and append the li's to the ul
         //console.log("result ");
 
-        var nextPageToken = data.nextPageToken;
-        var array = data.items;
-        var searchData = [];
+        let nextPageToken = data.nextPageToken;
+        let array = data.items;
+        let searchData = [];
 
-        var videoData = [];
+        let videoData = [];
         array.forEach(function (item) {
 
           if (item.id.kind === "youtube#video") {
-            var tempDict = [];
+            let tempDict = [];
             tempDict["videoId"] = item.id.videoId;
             tempDict["title"] = item.snippet.title;
             tempDict["thumbnail"] = item.snippet.thumbnails.medium.url;
@@ -101,30 +100,36 @@ export default class SearchDash extends Component {
   render() {
     return (
       <div>
+        {/* app header starts */}
         <AppHeader queryString={this.fetchQuery} />
+        {/* app header ends */}
 
-
+        {/*main content starts */}
 
         <div className="row">
+
+          {/*video view starts */}
+
           <div className="col two">
-            {Object.keys(this.state.videoData).length > 0
-              ? <VideoPlayer videoData={this.state.videoData} />
-              :
-              this.state.loading}
+            {Object.keys(this.state.videoData).length > 0 ? <VideoPlayer videoData={this.state.videoData} /> : this.state.loading}
           </div>
+        
+         {/*video view ends */}
+
+         {/*search result starts */}
+
           <div className="col  one">    {
             this.state.searchData.map(
               function (data, i) {
-
-
                 return <SideBarItem key={i} onClick={this.handleClick} videoData={data} />
-              }, this
-            )
-          }    </div>
+              }, this)
+          }
+          </div>
+         {/*search result ends */}
 
-
-
+      
         </div>
+        {/*main content ends */}
 
       </div>
     )
