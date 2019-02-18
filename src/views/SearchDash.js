@@ -73,8 +73,8 @@ export default class SearchDash extends Component {
 
           if (item.id.kind === "youtube#video") {
             let tempDict = [];
-            tempDict["videoId"] = item.id.videoId;
             tempDict["title"] = item.snippet.title;
+            tempDict["videoId"] = item.id.videoId;
             tempDict["thumbnail"] = item.snippet.thumbnails.medium.url;
             tempDict["description"] = item.snippet.description;
             //console.log(tempDict);

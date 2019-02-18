@@ -27,10 +27,7 @@ export default class Login extends Component {
       authCookieValue = JSON.parse(authCookieValue);
     }
     this.setState({ userAuth: authCookieValue }, () => {
-
-      //console.log("cookie value " + authCookieValue);
       if (authCookieValue) { this.props.history.push("/search") };
-
     });
 
   }
@@ -38,14 +35,11 @@ export default class Login extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value }, () => {
-
-      // validation
+      // do validation here 
     })
-
   }
 
   handleSubmit() {
-
     if (this.state.username === "admin" && this.state.password === "password") {
       cookie.save("auth", true);
       this.props.history.push("/search")
@@ -53,11 +47,11 @@ export default class Login extends Component {
       window.confirm('Invalid Credentials')
     }
   }
+
   render() {
     return (
 
          <div className="loginForm">
-
           <form>
             <fieldset>
             <div className="form-group">
@@ -67,7 +61,7 @@ export default class Login extends Component {
               <input type="password" id="password" placeholder="Password"  onChange={this.handleChange} value={this.state.password} />
               <input id="submit" type="button" value="Login" onClick={this.handleSubmit} />
             </div>
-             </fieldset>
+            </fieldset>
           </form>
         </div>
 

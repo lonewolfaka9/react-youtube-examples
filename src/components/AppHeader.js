@@ -21,14 +21,10 @@ export default class AppHeader extends Component {
 
   }
   handleSubmit(event) {
-
     let query = this.state.query;
     query = query.trim();
- 
     if (event.key === 'Enter' && query.length > 0) {
- 
       this.props.queryString(query);
-
     }
   }
   render() {
