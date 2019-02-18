@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 
 class VideoPlayer extends Component {
     constructor(props) {
@@ -49,8 +49,6 @@ class VideoPlayer extends Component {
     }
 }
 
-VideoPlayer.propTypes = {
-
-}
+ 
 
 export default VideoPlayer
