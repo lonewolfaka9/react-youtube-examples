@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import Main from './components/Main'
- //import './css/App.css';
- 
+import {Switch,Route} from 'react-router-dom';
+import Login from "./views/Login.js";
+import SearchDash from "./views/SearchDash.js" ;
 class App extends Component {
   render() {
     return (
-       <Main />
+      <main>
+      <Switch>
+          <Route exact path='/' component={Login} />
+          <Route exact path='/search' component={SearchDash} />
+       </Switch>
+      </main>
      );
   }
 }
