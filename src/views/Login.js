@@ -4,19 +4,17 @@ import cookie from 'react-cookies'
 
 import { observable } from 'mobx';
   
-class loginStore {
-  @observable username = "";
-  @observable password ="";
-}
+ 
 
   class Login extends Component {
 
   constructor(props) {
     super(props);
 
-   
-  
-
+    let user = observable({
+      username: '',
+      password: '',
+     })
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
