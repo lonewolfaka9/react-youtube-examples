@@ -2,19 +2,21 @@ import React from 'react';
 import Login from './Login';
 import { configure, shallow } from 'enzyme';
 import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
+import { observer } from 'mobx-react';
+
 const adapter = ReactSixteenAdapter;
 configure({ adapter: new adapter.default() });
 
 describe('Login', () => {
     const historyMock = { push: jest.fn() }; 
     window.confirm = jest.fn(() => true) // always click 'yes'
-    const login = shallow(<Login history={historyMock} />);
+    const login = shallow(observer(<Login history={historyMock} />));
     it('Login Page render', () => {
         expect(login).toMatchSnapshot();
     });
 
-    it('initializes default `state`', () => {
-        expect(login.state()).toEqual({ userAuth: false, username: '', password: '' });
+    it(' default `state` test', () => {
+        expect(login).toEqual({  username: '', password: '' });
     });
 
 
@@ -31,8 +33,8 @@ describe('Login', () => {
             passwordInput.simulate('change', { target: { id:"password",name: 'password', value: password } });
 
           //  console.log(login.state().username);
-            expect(login.state().username).toEqual(username);
-            expect(login.state().password).toEqual(password);
+            expect(login.this.username).toEqual(username);
+            expect(login.this.password).toEqual(password);
             login.find('#submit').simulate('click');
             expect(window.confirm).toHaveBeenLastCalledWith("Invalid Credentials");
            
@@ -56,8 +58,8 @@ describe('Login', () => {
             passwordInput.simulate('change', { target: { id:"password",name: 'password', value: password } });
 
            // console.log(login.state().username);
-            expect(login.state().username).toEqual(username);
-            expect(login.state().password).toEqual(password);
+            expect(login.this.username).toEqual(username);
+            expect(login.this.password).toEqual(password);
             login.find('#submit').simulate('click');
             expect(historyMock.push).toHaveBeenLastCalledWith('/search');           
 
